@@ -24,6 +24,7 @@ For a cache with a single cache line, that cache line will store the 16 bytes of
 with the block identifier. Each memory access will first check whether the address is part of the
 block currently in the cache (if any). Since we are only simulating memory reads and writes, you
 cache will not need to store the actual blocks.
+
 1.1 Memory operations
 Your simulator will simulate two memory operations: reading and writing individual bytes. Your
 program will read a trace file describing addresses to read or write from, and will keep track of
@@ -45,6 +46,7 @@ writes.
 Note that loading an address or block into the cache means changing the information about
 a particular cache line to indicate that it holds a particular block. Since your simulator does not
 simulate the contents of memory, no data will be loaded or stored from the address itself.
+
 1.1.1 Prefetching
 Prefetching is a technique used to increase spatial locality in a cache. In the operations described
 above, blocks are read from memory only after a cache miss. If a cache uses prefetching, each cache
@@ -70,6 +72,7 @@ Note that the prefetching step is not considered a cache hit or a cache miss.
 The behavior is similar for write operations, except that the prefetched block is not written back
 to memory.
 Your program will simulate the behavior of a cache with or without prefetching.
+
 1.2 Mapping
 For caches with multiple cache lines, there are several ways of determining which cache lines will
 store which blocks. Generally, the cache lines will be grouped into one or more sets. Whenever a
@@ -91,6 +94,7 @@ For direct and n-way associative caches, your program will need to derive the nu
 (S) from the associativity A (the number of cache lines per set), the block size B, and the size of
 the cache C using the relation C = SAB. For fully associative caches, S = 1, but you will need to
 determine A using the same relation.2
+
 1.3 Calculating block, set, and tag
 We will simulate a cache in a system with 48-bit addresses. Since int has 32 bits on the iLab
 machines, you will want to use a long or unsigned long to represent the addresses. Using some
@@ -110,6 +114,7 @@ k − 1, represented in binary, is all zeros except for the last k bits, which a
 4 − 1 is 11112, and so forth. Recall that 2
 k may be easily computed by 1 << k.
 The tag is the portion of the address remaining after removing the block offset and set identifier.
+
 1.4 Replacement policies
 Each cache line is either valid, meaning it contains a copy of a block from memory, or invalid,
 meaning it does not. Initially, all cache lines are invalid. As cache misses occur and blocks are
